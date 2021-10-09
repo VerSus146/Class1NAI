@@ -1,17 +1,25 @@
-#  GameOfBones - pierwsze AI
+#  Hexpawn
 #  Autorzy: Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
 
 from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 
 
-class GameOfBones( TwoPlayerGame ):
-    #  Players remove 1, 2 or 3 bones from a pile.
-    #  The goal of the game is to make the opponent pull the last bone.
+class GameOfBones(TwoPlayerGame):
+    #  Players have to play against eachother.
+    #  To win the game you have to defeat your enemy by:
+    #  Stepping on his start point
+    #  Defeating all of his pawns
+    #  Blocking him from doing any legal moves
+
+    #  Positions of the board:
+    #  7 8 9
+    #  4 5 6
+    #  1 2 3
 
     def __init__(self, players=None):
         self.players = players
-        self.pile = 20 # start with 20 bones on the pile
-        self.current_player = 1 # Start with player 1
+        self.board = [0 for i in range(9)]
+        self.current_player = 1  # Start with player 1
 
     def possible_moves(self): return ['1', '2', '3']  # get possible moves
     def make_move(self, move): self.pile -= int(move)  # remove bones from pile
