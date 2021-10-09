@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class GameOfBones( TwoPlayerGame ):
+
+    def __init__(self, players=None):
+        self.players = players
+        self.pile = 20 # start with 20 bones on the pile
+        self.current_player = 1 # Start with player 1
+
+    def possible_moves(self): return ['1', '2', '3']  # get possible moves
+    def make_move(self, move): self.pile -= int(move)  # remove bones from pile
+    def win(self): return self.pile <= 0  # opponent took the last bone ?
+    def is_over(self): return self.win()  # game stops when someone wins
+    def show(self): print("%d bones left in this pile" % self.pile)  # print how many bones are left
+    def scoring(self): return 100 if game.win() else 0  # Scoring for the AI
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+ai = Negamax(13)
+game = GameOfBones([Human_Player(), AI_Player(ai)])
+history = game.play()
