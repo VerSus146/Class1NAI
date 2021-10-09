@@ -1,6 +1,12 @@
+#  GameOfBones - pierwsze AI
+#  Autorzy: Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
+
 from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 
+
 class GameOfBones( TwoPlayerGame ):
+    #  Players remove 1, 2 or 3 bones from a pile.
+    #  The goal of the game is to make the opponent pull the last bone.
 
     def __init__(self, players=None):
         self.players = players
@@ -15,6 +21,7 @@ class GameOfBones( TwoPlayerGame ):
     def scoring(self): return 100 if game.win() else 0  # Scoring for the AI
 
 
-ai = Negamax(13)
+# Setup AI and start match
+ai = Negamax(13)  # AI will think 13 moves in advance
 game = GameOfBones([Human_Player(), AI_Player(ai)])
 history = game.play()
