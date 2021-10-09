@@ -29,6 +29,7 @@ class GameOfBones(TwoPlayerGame):
     def scoring(self): return 100 if game.win() else 0  # Scoring for the AI
 
 
+# https://code-with-me.jetbrains.com/mTJ4fRPanxNwyU7Gm1bByw#p=PY&fp=B195FA4AB24EF905E0F154F70B5CD454CBF6279FD76B0E040DEBE20609205BCF
 # Setup AI and start match
 ai = Negamax(13)  # AI will think 13 moves in advance
 game = GameOfBones([Human_Player(), AI_Player(ai)])
