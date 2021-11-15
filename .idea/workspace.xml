@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4048a9d-2d28-43a2-865c-f3df2c514055" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/Pawn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
-    <list id="9f89d03d-eaec-4da6-b978-def541152248" name="Changes by Krystian" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list id="9f89d03d-eaec-4da6-b978-def541152248" name="Changes by Krystian" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -31,24 +28,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/main.py">
-      <ranges>
-        <range start1="4" end1="4" start2="4" end2="5" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="20" end1="26" start2="21" end2="37" changelist="9f89d03d-eaec-4da6-b978-def541152248" />
-        <range start1="27" end1="28" start2="38" end2="51" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="29" end1="30" start2="52" end2="53" changelist="9f89d03d-eaec-4da6-b978-def541152248" />
-        <range start1="31" end1="34" start2="54" end2="61" changelist="9f89d03d-eaec-4da6-b978-def541152248" />
-        <range start1="35" end1="35" start2="62" end2="64" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="36" end1="37" start2="65" end2="69" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="38" end1="39" start2="70" end2="80" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="40" end1="41" start2="81" end2="84" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="42" end1="43" start2="85" end2="87" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="44" end1="49" start2="88" end2="93" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-        <range start1="50" end1="53" start2="94" end2="94" changelist="b4048a9d-2d28-43a2-865c-f3df2c514055" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1zGZeyI5Ld1sL5Ii97LG2xInHhe" />
   <component name="ProjectViewState">
@@ -61,6 +40,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Krystian\PycharmProjects\Class1NAI\Lab3" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="Pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -144,15 +128,12 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Putting everything in one project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Putting everything in one project" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -161,10 +142,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Class1NAI$main.coverage" NAME="main Coverage Results" MODIFIED="1634481669537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Class1NAI$NAI.coverage" NAME="NAI Coverage Results" MODIFIED="1633776992211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Class1NAI$Pawn.coverage" NAME="Pawn Coverage Results" MODIFIED="1634479901220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

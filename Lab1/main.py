@@ -1,53 +1,112 @@
 #  Hexpawn
-#  Autorzy: Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
+#  Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
 
-from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
+from easyAI import TwoPlayerGame, Negamax, AI_Player
 
 
-class GameOfBones(TwoPlayerGame):
-    #  Players have to play against eachother.
-    #  To win the game you have to defeat your enemy by:
-    #  Stepping on his start point
-    #  Defeating all of his pawns
-    #  Blocking him from doing any legal moves
+class Hexapawn(TwoPlayerGame):
+    """
 
-    #  Positions of the board:
-    #  7 8 9
-    #  4 5 6
-    #  1 2 3
+    Zasady gry
+    http://wikipedia.org/wiki/Hexapawn
+    Dokumentacja easyAI
+    https://zulko.github.io/easyAI/ref.html
+    """
 
-    def __init__(self, players=None):
+    def __init__(self, players, size=(3, 3)):
+        # Stworzenie boarda
+        self.size_y = size[0]
+        self.size_x = size[1]
+        board = [[(i, j) for j in range(self.size_y)] for i in [0, self.size_x - 1]]
+
+        """ 
+         Ustawienie graczy na planszy
+          direction = strona poruszania gora lub dół
+          goal_line = linia przeciwnika, jak do niej dotrzemy to wygrywamy gora lub dół
+          pawns = przypisanie pionka gracza
+        """
+        for i, d, goal, pawns in [(0, 1, self.size_x - 1, board[0]), (1, -1, 0, board[1])]:
+            players[i].direction = d
+            players[i].goal_line = goal
+            players[i].pawns = pawns
+
         self.players = players
-        self.board = {
-            {2, 2, 2},
-            {0, 0, 0},
-            {1, 1, 1}
-        }
-        self.current_player = 1  # Start with player 1
+        self.current_player = 1
 
-    def possible_moves(self): return ['0.0 1.0', '0.1 1.1', '0.2 1.2']  # get possible moves
+    def possible_moves(self):
+        moves = []
+        # self.opponent pokazuje nam pionki przeciwnika
+        opponent_pawns = self.opponent.pawns
+        direction = self.player.direction
 
-    def make_move(self, move: [tuple, tuple]):
-        pawn = move[0]
-        move = move[1]
-        if board[move[0]][move[1]] == 0:
-            board[move[0]][move[1]] = curent_player
+        """ Definiujemy wszystkie możliwe ruchy pionkiem dla danego gracza """
+        for i, j in self.player.pawns:
+            if (i + direction, j) not in opponent_pawns:
+                moves.append(((i, j), (i + direction, j)))
+            if (i + direction, j + 1) in opponent_pawns:
+                moves.append(((i, j), (i + direction, j + 1)))
+            if (i + direction, j - 1) in opponent_pawns:
+                moves.append(((i, j), (i + direction, j - 1)))
 
+        """ 
+         Formatujemy je do wersji array zawierającej string z informacją skąd i dokąd pion ma sie przesunąć
+         ['A1 B1', 'A2 B2', 'A3 B3']
+         
+         Wykonujemy to, ponieważ possible_moves nie przyjmuje osadzonych array'ów/list
+        """
+        to_string = lambda move: " ".join(
+            ["ABCDEFGHIJ"[move[i][0]] + str(move[i][1] + 1) for i in (0, 1)]
+        )
+        possible_moves = list(map(to_string, [(i, j) for i, j in moves]))
 
-    def win(self): return self.pile <= 0  # opponent took the last bone ?
+        return possible_moves
 
-    def is_over(self): return self.win()  # game stops when someone wins
+    def make_move(self, move):
+        """ Rozparsowywujemy string z informacją o ruchu i dzielimy go na tuple z pozycją skąd dokąd """
+        to_tuple = lambda s: ("ABCDEFGHIJ".index(s[0]), int(s[1:]) - 1)
 
-    def show(self): print("%d bones left in this pile" % self.pile)  # print how many bones are left
+        """ Pierwsza część naszego stringu to skąd idzie pion, a druga dokąd """
+        move = list(map(to_tuple, move.split(" ")))
 
-    def scoring(self): return 100 if game.win() else 0  # Scoring for the AI
+        ind = self.player.pawns.index(move[0])
+        self.player.pawns[ind] = move[1]
 
-        # https://code-with-me.jetbrains.com/mTJ4fRPanxNwyU7Gm1bByw#p=PY&fp=B195FA4AB24EF905E0F154F70B5CD454CBF6279FD76B0E040DEBE20609205BCF
-        # Setup AI and start match
-        ai = Negamax(13)  # AI will think 13 moves in advance
-        game = GameOfBones([Human_Player(), AI_Player(ai)])
-        history = game.play()
+        if move[1] in self.opponent.pawns:
+            self.opponent.pawns.remove(move[1])
 
-    class Pawn:
+    def lose(self):
+        """ Jeżeli przeciwnik wkroczy na linię startu gracza lub gracz nie ma już ruchów - gracz przegrywa """
+        return any([i == self.opponent.goal_line for i, j in self.opponent.pawns]) or (
+                self.possible_moves() == []
+        )
 
+    def is_over(self):
+        return self.lose()
 
+    def show(self):
+        """
+             Wyświetlenie aktualniej tablicy po wykonanym ruchu
+             Jezeli jest to pierwszy gracz to dajemy 1
+             Jezeli jest to drugi gracz to dajemy 2
+             Jezeli jest cokolwiek innego ( błą∂ ) to ustawia "."
+        """
+        f = (
+            lambda x: "1"
+            if x in self.players[0].pawns
+            else ("2" if x in self.players[1].pawns else ".")
+        )
+        print(
+            "\n".join(
+                [
+                    " ".join([f((i, j)) for j in range(self.size_x)])
+                    for i in range(self.size_y)
+                ]
+            )
+        )
+
+    def scoring(self): return -100 if self.lose() else 0  # Dla AI
+
+ai = Negamax(10)
+game = Hexapawn([AI_Player(ai), AI_Player(ai)])
+game.play()
+print("Gracz %d wygrywa po %d ruchach " % (game.opponent_index, game.nmove))
