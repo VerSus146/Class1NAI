@@ -20,14 +20,14 @@ def test():
                 while True:
                     if index is 0:
                         person = row[index]
+                    elif index > len(row) - 2:
+                        data.append({person: movies})
+                        index = 0
+                        break
                     elif index % 2 is 1:
                         title = row[index]
                     elif index % 2 is 0:
                         points = row[index]
                         movies.append({title: points})
-                    elif row[index] is None:
-                        data.append({person: {json.dumps(movies)}})
-                        index = 0
-                        break
                     index = index + 1
             print(movies)
