@@ -1,12 +1,11 @@
 import csv
-import json
 
 
-def test():
+def Parse_CSV():
+    data = []
     with open('filmy.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
         csvReader = csv.reader(csvfile, delimiter=',')
         skipFirst = True
-        data = []
         for row in csvReader:
             if skipFirst is True:
                 skipFirst = False
@@ -31,3 +30,4 @@ def test():
                         movies.append({title: points})
                     index = index + 1
             print(movies)
+    return data
