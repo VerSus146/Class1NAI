@@ -1,5 +1,5 @@
 import csv
-
+from unidecode import unidecode
 
 def Parse_CSV():
     data = []
@@ -24,7 +24,6 @@ def Parse_CSV():
                         personName = row[index]
                     #Probably end of the row
                     elif (column == None or column == "") or index > len(row):
-                        data.append({personName: movies})
                         break
                     #Movie title column
                     elif index % 2 == 1:
@@ -34,11 +33,12 @@ def Parse_CSV():
                         points = row[index]
                     #When we have both we need to save them
                     if title != None and points != None:
-                        movies.append({title: points})
+                        #Lower case and unidecode special letters ( śćż )  to normal letters
+                        movies.append({unidecode(title.lower()): points})
                         title = None
                         points = None
                     index = index + 1
-                peopleMovies.append({personName: movies})
+                peopleMovies.append({unidecode(personName.lower()): movies})
 
     print(peopleMovies)
     return peopleMovies
