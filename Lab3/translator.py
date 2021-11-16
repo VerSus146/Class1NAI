@@ -1,5 +1,6 @@
 import Levenshtein as lev
 
+# Database of movies based on the excel, but with proper names, just like it would be on a real server
 MoviesDB = {
     "Polowanie na Czerwony Październik": "The Hunt for Red October",
     "Rick & Morty": "Rick & Morty",
@@ -319,39 +320,47 @@ MoviesDB = {
 }
 
 
+# Take user input from CSV ( Excel from our class ) and compare it to MoviesDB created above
 def levenshtein_input_to_MoviesDB_comparison(user_input):
-    lev_threshold = 75.0
     found_movie = (None, 0.0)
     found_translated = False
     for key in MoviesDB:
-        movie = levenshtein_ratio(user_input, key, lev_threshold)
+        movie = levenshtein_ratio(user_input, key)
         if movie is not None:
+            # If found movie is ~100% similar ( allowed ~0.09% of difference ) we take it as our correct answer
             if movie[1] > 99.9:
                 found_movie = movie
                 break
+            # Else set the movie we found as currently best and look for better match
             elif movie[1] > found_movie[1]:
                 found_movie = movie
 
+    # If previously found best movie is less than 80% match, we look through values of our MoviesDB dictionary
     if found_movie[1] < 80.0:
         for value in MoviesDB.values():
-            movie = levenshtein_ratio(user_input, value, lev_threshold)
+            movie = levenshtein_ratio(user_input, value)
             if movie is not None:
                 if movie[1] > 99.9:
                     found_movie = movie
-                    found_translated = True
                     break
                 elif movie[1] > found_movie[1]:
                     found_movie = movie
-                    found_translated = True
 
+    # Return best found movie ( most close to user_input )
     return found_movie
 
 
-
-
-def levenshtein_ratio(user_input, check, lev_threshold):
+# This function is checking if the keys and values from MoviesDB are similar to user_input
+def levenshtein_ratio(user_input, check):
+    # Threshold for Levenshtein comparison. Anything below 75% similarity is going to be counted as not similar.
+    lev_threshold = 75.0
+    # Ratio is the similarity %, but it's return value is a float in a range of 0 to 1, so we multiply it for easy use
+    # It's using InDel distance method to measure similarity
     ratio = lev.ratio(user_input, check) * 100
+    # If similarity % is higher than set threshold, return found movie in a tuple
+    # (<Movie Name> : string,<Similarity %> : float)
     if ratio > lev_threshold:
         return (check, ratio)
 
+    # Otherwise if not in threshold, return None
     return None
