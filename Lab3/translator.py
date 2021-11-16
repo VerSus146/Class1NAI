@@ -1,3 +1,5 @@
+import Levenshtein as lev
+
 MoviesDB = {
     "Polowanie na Czerwony Październik": "The Hunt for Red October",
     "Rick & Morty": "Rick & Morty",
@@ -315,3 +317,41 @@ MoviesDB = {
     "Ojciec chrzestny": "The Godfather",
     "Spider-Man 2": "Spider-Man 2"
 }
+
+
+def levenshtein_input_to_MoviesDB_comparison(user_input):
+    lev_threshold = 75.0
+    found_movie = (None, 0.0)
+    found_translated = False
+    for key in MoviesDB:
+        movie = levenshtein_ratio(user_input, key, lev_threshold)
+        if movie is not None:
+            if movie[1] > 99.9:
+                found_movie = movie
+                break
+            elif movie[1] > found_movie[1]:
+                found_movie = movie
+
+    if found_movie[1] < 80.0:
+        for value in MoviesDB.values():
+            movie = levenshtein_ratio(user_input, value, lev_threshold)
+            if movie is not None:
+                if movie[1] > 99.9:
+                    found_movie = movie
+                    found_translated = True
+                    break
+                elif movie[1] > found_movie[1]:
+                    found_movie = movie
+                    found_translated = True
+
+    return found_movie
+
+
+
+
+def levenshtein_ratio(user_input, check, lev_threshold):
+    ratio = lev.ratio(user_input, check) * 100
+    if ratio > lev_threshold:
+        return (check, ratio)
+
+    return None
