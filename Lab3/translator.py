@@ -2,6 +2,7 @@ import Levenshtein as lev
 
 # Database of movies based on the excel, but with proper names, just like it would be on a real server
 MoviesDB = {
+    "Toy Story": "Toy Story",
     "Polowanie na Czerwony Październik": "The Hunt for Red October",
     "Rick & Morty": "Rick & Morty",
     "Teoria wielkiego podrywu": "The Big Bang Theory",
@@ -307,7 +308,6 @@ MoviesDB = {
     "Kiler": "The Hitman",
     "Psy": "Pigs",
     "Psy 2: Ostatnia krew": "Pigs 2: The Last Blood",
-    "Toy Story": "Toy Story",
     "Kapitan Jastrząb": "Captain Tsubasa",
     "Sonic. Szybki jak błyskawica": "Sonic the Hedgehog",
     "Egzorcysta": "The Exorcist",
@@ -350,7 +350,7 @@ def levenshtein_input_to_MoviesDB_comparison(user_input):
 
     # If the name was found in other language, get it's name in english
     if found_translated is False and found_movie[0] is not None:
-        found_movie = MoviesDB[found_movie[0]]
+        found_movie = (MoviesDB[found_movie[0]], found_movie[1])
     # Return best found movie ( most close to user_input )
     return found_movie
 
