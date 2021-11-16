@@ -2,7 +2,6 @@ import csv
 from unidecode import unidecode
 
 def Parse_CSV():
-    data = []
     with open('filmy.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
         csvReader = csv.reader(csvfile, delimiter=',')
         skipFirst = True

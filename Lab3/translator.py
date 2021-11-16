@@ -348,8 +348,8 @@ def levenshtein_input_to_MoviesDB_comparison(user_input):
                     found_translated = True
                     found_movie = movie
 
-    # If the name was found in other language, get it's name to english
-    if found_translated is False:
+    # If the name was found in other language, get it's name in english
+    if found_translated is False and found_movie[0] is not None:
         found_movie = MoviesDB[found_movie[0]]
     # Return best found movie ( most close to user_input )
     return found_movie
@@ -358,7 +358,7 @@ def levenshtein_input_to_MoviesDB_comparison(user_input):
 # This function is checking if the keys and values from MoviesDB are similar to user_input
 def levenshtein_ratio(user_input, check):
     # Threshold for Levenshtein comparison. Anything below 75% similarity is going to be counted as not similar.
-    lev_threshold = 75.0
+    lev_threshold = 70.0
     # Ratio is the similarity %, but it's return value is a float in a range of 0 to 1, so we multiply it for easy use
     # It's using InDel distance method to measure similarity
     ratio = lev.ratio(user_input, check) * 100
