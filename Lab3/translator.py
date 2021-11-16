@@ -2,6 +2,12 @@ import Levenshtein as lev
 
 # Database of movies based on the excel, but with proper names, just like it would be on a real server
 MoviesDB = {
+    "Czy leci z nami pilot?": "Airplane!",
+    "Kapitan Jastrząb": "Captain Tsubasa",
+    "Dwóch i pół": "Two and a Half Men",
+    "Nie czas umierać": "No Time To Die",
+    "Chłopaki z baraków": "Trailer Park Boys",
+    "Gwiezdne wojny: Skywalker. Odrodzenie": "Star Wars: The Rise of Skywalker",
     "Toy Story": "Toy Story",
     "Polowanie na Czerwony Październik": "The Hunt for Red October",
     "Rick & Morty": "Rick & Morty",
@@ -39,11 +45,11 @@ MoviesDB = {
     "Szpital New Amsterdam": "New Amsterdam",
     "Diuna": "Dune",
     "Jak poznałem waszą matkę": "How I met your mother",
-    "Chłopaki z baraków": "Trailer Park Boys",
     "Sherlock": "Sherlock",
     "Ty": "You",
     "Gotham": "Gotham",
     "One Direction: All For One": "One Direction: All For One",
+    "One Direction: Night": "One Direction: Night",
     "Love Death + Robots": "Love, Death & Robots",
     "Wiedźmin": "The Witcher",
     "Babydriver": "Baby driver",
@@ -56,7 +62,6 @@ MoviesDB = {
     "House of Cards": "House of Cards",
     "Wiedźmin: Zmora Wilka": "The Witcher: Nightmare of the Wolf",
     "Kod wart miliardy dolarów": "The Billion Dollar Code",
-    "Nie czas umierać": "No Time To Die",
     "Lupin": "Lupin",
     "Incepcja": "Inception",
     "W garniturach": "The Suits",
@@ -142,7 +147,7 @@ MoviesDB = {
     "Zapach kobiety": "Scent of a Woman",
     "Mechaniczna pomarańcza": "A Clockwork Orange",
     "Mordercza opona": "Rubber",
-    "365 dni": "365 Days",
+    "365": "365 Days",
     "Pogromcy duchów II": "GhostBusters II",
     "Pokój": "The Room",
     "Nerd": "Nerd",
@@ -201,7 +206,6 @@ MoviesDB = {
     "Lot nad kukułczym gniazdem": "One Flew Over the Cuckoo's Nest",
     "Milczenie owiec": "The Silence of the Lambs",
     "Władca Pierścieni": "The Lord of the Rings",
-    "Dwóch i pół": "Two and a Half Men",
     "Gra": "The Game",
     "Xtro": "Xtro",
     "Na rauszu": "Another Round",
@@ -226,7 +230,6 @@ MoviesDB = {
     "Elfy": "Elfs",
     "Cicha noc, śmierci noc II": "Silent Night, Deadly Night Part 2",
     "Bohemian Rhapsody": "Bohemian Rhapsody",
-    "Gwiezdne wojny: Skywalker. Odrodzenie": "Star Wars: The Rise of Skywalker",
     "Glass": "Glass",
     "Parasite": "Parasite",
     "Botoks": "Botoxx",
@@ -289,7 +292,7 @@ MoviesDB = {
     "Bad Boys": "Bad Boys",
     "Spider-man": "Spider-man",
     "Transformers": "Transformers",
-    "Ocean's Twelve: Dogrywka": "Ocean's Twelve",
+    "Ocean's 12: Dogrywka": "Ocean's 12",
     "Django": "Django",
     "Creed Narodziny legendy": "Creed",
     "Brickleberry": "Brickleberry",
@@ -308,7 +311,6 @@ MoviesDB = {
     "Kiler": "The Hitman",
     "Psy": "Pigs",
     "Psy 2: Ostatnia krew": "Pigs 2: The Last Blood",
-    "Kapitan Jastrząb": "Captain Tsubasa",
     "Sonic. Szybki jak błyskawica": "Sonic the Hedgehog",
     "Egzorcysta": "The Exorcist",
     "Skok przez płot": "Over the Hedge",
@@ -316,7 +318,8 @@ MoviesDB = {
     "Twój Vincent": "Loving Vincent",
     "Chłopaki nie płaczą": "Boys Don't Cry",
     "Ojciec chrzestny": "The Godfather",
-    "Spider-Man 2": "Spider-Man 2"
+    "Spider-Man 2": "Spider-Man 2",
+    "Star Wars": "Star Wars"
 }
 
 
@@ -358,10 +361,10 @@ def levenshtein_input_to_MoviesDB_comparison(user_input):
 # This function is checking if the keys and values from MoviesDB are similar to user_input
 def levenshtein_ratio(user_input, check):
     # Threshold for Levenshtein comparison. Anything below 75% similarity is going to be counted as not similar.
-    lev_threshold = 70.0
+    lev_threshold = 63.0
     # Ratio is the similarity %, but it's return value is a float in a range of 0 to 1, so we multiply it for easy use
     # It's using InDel distance method to measure similarity
-    ratio = lev.ratio(user_input, check) * 100
+    ratio = lev.ratio(user_input.lower(), check.lower()) * 100
     # If similarity % is higher than set threshold, return found movie in a tuple
     # (<Movie Name> : string,<Similarity %> : float)
     if ratio > lev_threshold:
