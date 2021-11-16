@@ -34,14 +34,14 @@ def Parse_CSV():
                     #When we have both we need to save them
                     if title != None and points != None:
                         print('original: ',title)
-                        movie = lev_comapre(title)
+                        movie = lev_comapre(title)[0]
                         print('search: ',movie)
                         #Lower case and unidecode special letters ( śćż )  to normal letters
-                        movies.append({unidecode(title.lower()): points})
+                        movies.append({movie: points})
                         title = None
                         points = None
                     index = index + 1
-                peopleMovies.append({unidecode(personName.lower()): movies})
+                peopleMovies.append({unidecode(personName.lower().replace(' ', '_')): movies})
 
     print(peopleMovies)
     return peopleMovies
