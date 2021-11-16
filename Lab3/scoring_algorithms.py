@@ -27,7 +27,7 @@ def euclidean_distance(dataset, user1, user2):
 
     for item in dataset[user1]:
         if item in dataset[user2]:
-            squared_diff.append(np.square(dataset[user1][item] - dataset[user2][item]))
+            squared_diff.append(np.square(float(dataset[user1][item]) - float(dataset[user2][item])))
 
     return 1 / (1 + np.sqrt(np.sum(squared_diff)))
 

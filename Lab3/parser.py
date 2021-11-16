@@ -3,16 +3,16 @@ from unidecode import unidecode
 from translator import levenshtein_input_to_MoviesDB_comparison as lev_comapre
 
 def Parse_CSV():
-    with open('filmy.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
+    with open('filmy_2.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
         csvReader = csv.reader(csvfile, delimiter=',')
         skipFirst = True
-        peopleMovies = []
+        peopleMovies = {}
         for row in csvReader:
             if skipFirst is True:
                 skipFirst = False
                 continue
             else:
-                movies = []
+                movies = {}
                 index = 0
                 personName = None
                 title = None
@@ -37,11 +37,12 @@ def Parse_CSV():
                         movie = lev_comapre(title)[0]
                         print('search: ',movie)
                         #Lower case and unidecode special letters ( śćż )  to normal letters
-                        movies.append({movie: points})
+                        movies[movie.lower()] = points
                         title = None
                         points = None
                     index = index + 1
-                peopleMovies.append({unidecode(personName.lower().replace(' ', '_')): movies})
+                    personKeyName = unidecode(personName.lower()).replace(' ', '_')
+                peopleMovies[personKeyName] = movies
 
     print(peopleMovies)
     return peopleMovies

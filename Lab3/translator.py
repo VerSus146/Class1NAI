@@ -147,7 +147,7 @@ MoviesDB = {
     "Zapach kobiety": "Scent of a Woman",
     "Mechaniczna pomarańcza": "A Clockwork Orange",
     "Mordercza opona": "Rubber",
-    "365": "365 Days",
+    "365 dni": "365 Days",
     "Pogromcy duchów II": "GhostBusters II",
     "Pokój": "The Room",
     "Nerd": "Nerd",
