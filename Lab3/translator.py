@@ -341,11 +341,16 @@ def levenshtein_input_to_MoviesDB_comparison(user_input):
             movie = levenshtein_ratio(user_input, value)
             if movie is not None:
                 if movie[1] > 99.9:
+                    found_translated = True
                     found_movie = movie
                     break
                 elif movie[1] > found_movie[1]:
+                    found_translated = True
                     found_movie = movie
 
+    # If the name was found in other language, get it's name to english
+    if found_translated is False:
+        found_movie = MoviesDB[found_movie[0]]
     # Return best found movie ( most close to user_input )
     return found_movie
 
