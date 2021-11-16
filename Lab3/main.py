@@ -4,7 +4,7 @@ import json
 import numpy as np
 from scoring_algorithms import euclidean_distance
 
-parser.test()
+parser.Parse_CSV()
 
 def build_arg_parser():
     parser = argparse.ArgumentParser(description='Find users who are similar to the input user')

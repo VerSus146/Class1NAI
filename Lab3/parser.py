@@ -1,5 +1,6 @@
 import csv
 from unidecode import unidecode
+from translator import levenshtein_input_to_MoviesDB_comparison as lev_comapre
 
 def Parse_CSV():
     with open('filmy.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
@@ -32,6 +33,9 @@ def Parse_CSV():
                         points = row[index]
                     #When we have both we need to save them
                     if title != None and points != None:
+                        print('original: ',title)
+                        movie = lev_comapre(title)
+                        print('search: ',movie)
                         #Lower case and unidecode special letters ( śćż )  to normal letters
                         movies.append({unidecode(title.lower()): points})
                         title = None
