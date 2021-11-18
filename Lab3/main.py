@@ -1,9 +1,11 @@
-import parser
+from Lab3 import parser
 import argparse
 import json
 import numpy as np
 from scoring_algorithms import euclidean_distance
 
+parsed = parser.Parse_CSV()
+parser2 = parser.Parser_V2(parsed)
 def build_arg_parser():
     parser = argparse.ArgumentParser(description='Find users who are similar to the input user')
     parser.add_argument('--user', dest='user', required=True,

@@ -1,8 +1,11 @@
 import csv
+
+from translator import MoviesDB
 from unidecode import unidecode
 from translator import levenshtein_input_to_MoviesDB_comparison as lev_comapre
 
-def Parse_CSV():
+
+def Parse_CSV() -> dict:
     with open('filmy_2.csv', encoding="ISO-8859-2", errors='ignore') as csvfile:
         csvReader = csv.reader(csvfile, delimiter=',')
         skipFirst = True
@@ -44,5 +47,17 @@ def Parse_CSV():
                     personKeyName = unidecode(personName.lower()).replace(' ', '_')
                 peopleMovies[personKeyName] = movies
 
-    print(peopleMovies)
     return peopleMovies
+
+
+def Parser_V2(parsed) -> list:
+    data = []
+    for person_id, person in enumerate(parsed):
+        rated_movies = []
+        for movie_id, movie in enumerate(MoviesDB.values()):
+            if movie.lower() in parsed[person]:
+                rated_movies.append(parsed[person][movie.lower()])
+            else:
+                rated_movies.append("0")
+        data.append(rated_movies)
+    return data
