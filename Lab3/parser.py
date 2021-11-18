@@ -50,7 +50,7 @@ def Parse_CSV() -> dict:
     return peopleMovies
 
 
-def Parser_V2(parsed) -> list:
+def Parser_neighbours_algorithm_clustering(parsed) -> list:
     data = []
     for person_id, person in enumerate(parsed):
         rated_movies = []

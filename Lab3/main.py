@@ -1,11 +1,12 @@
 from Lab3 import parser
 import argparse
-import json
+
 import numpy as np
 from scoring_algorithms import euclidean_distance
+from scoring_algorithms import Neighbours_algorithm_clustering
 
 parsed = parser.Parse_CSV()
-parser2 = parser.Parser_V2(parsed)
+
 def build_arg_parser():
     parser = argparse.ArgumentParser(description='Find users who are similar to the input user')
     parser.add_argument('--user', dest='user', required=True,
@@ -82,6 +83,9 @@ def get_user_movies(data,similar_users, user_search):
         return [recommended_movies, unrecommended_movies]
 
 if __name__ == '__main__':
+
+    Neighbours_algorithm_clustering(parsed, 'pawedz"_czapiewski', 'maciej_rybacki')
+
     # args = build_arg_parser().parse_args()
     # user = args.user
     user = 'tomasz_samdz"l'
