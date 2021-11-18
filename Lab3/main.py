@@ -12,7 +12,6 @@ def build_arg_parser():
                         help='Input user')
     return parser
 
-
 # Finds users in the dataset that are similar to the input user
 def find_similar_users(dataset, user, num_users):
     if user not in dataset:
@@ -30,16 +29,68 @@ def find_similar_users(dataset, user, num_users):
 
     return scores[top_users]
 
+def dict_diff(dict_a, dict_b, show_value_diff=True):
+  result = {}
+  result['added']   = {k: dict_b[k] for k in set(dict_b) - set(dict_a)}
+  result['removed'] = {k: dict_a[k] for k in set(dict_a) - set(dict_b)}
+  if show_value_diff:
+    common_keys =  set(dict_a) & set(dict_b)
+    result['value_diffs'] = {
+      k:(dict_a[k], dict_b[k])
+      for k in common_keys
+      if dict_a[k] != dict_b[k]
+    }
+  return result
+
+
+
+def get_user_movies(data,similar_users, user_search):
+    user_search_movies = data[user_search]
+    recommendation_level = 8
+
+    recommended_movies = []
+    unrecommended_movies = []
+    for user in similar_users:
+        if user[0] not in data:
+            continue
+        #get user movies
+        user_movies = data[user[0]]
+
+        #calculate diff and select NOT already watched movies
+        user_movies = dict_diff(user_movies, user_search_movies)
+
+        #sort in the descending order by rating
+        movies_diff = sorted(user_movies['added'].items(), key=lambda x: float(x[1]), reverse=True)
+
+        # let's set unrecommended movies - those with rating with 4 and below
+        unrecommended_movies = movies_diff[-5:]
+        unrecommended_movies = unrecommended_movies[::-1]
+
+        # appending recommended movies of the matching user
+        for movie_diff in movies_diff:
+            #if we reach 5 recommendation we can return
+            if len(recommended_movies) == 5:
+                return [recommended_movies, unrecommended_movies]
+
+            # movies has to have certain rating/recommendation level to be approved
+            if float(movie_diff[1]) >= recommendation_level:
+                recommended_movies.append(movie_diff)
+
+        #if we didn't find enough recommendation we go to another similiar user
+        if len(recommended_movies) < 5:
+            continue
+        return [recommended_movies, unrecommended_movies]
 
 if __name__ == '__main__':
     # args = build_arg_parser().parse_args()
     # user = args.user
-    user = 'pawedz"_czapiewski'
+    user = 'tomasz_samdz"l'
     data = parser.Parse_CSV()
 
-    print('\nUsers similar to ' + user + ':\n')
+    # print('\nUsers similar to ' + user + ':\n')
     similar_users = find_similar_users(data, user, 3)
-    print('User\t\t\tSimilarity score')
-    print('-' * 41)
-    for item in similar_users:
-        print(item[0], '\t\t', round(float(item[1]), 2))
+    recommended_movies = get_user_movies(data,similar_users, user)
+
+    print('similiar_matching',similar_users)
+    print('recommended_movies', recommended_movies[0], 'recommended_movies', recommended_movies[1])
+

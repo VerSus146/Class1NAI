@@ -162,7 +162,7 @@ MoviesDB = {
     "Seksmisja": "Sexmission",
     "Small World": "Small World",
     "Buntownik z wyboru": "Good Will Hunting",
-    "Intouchables": "Nietykalni",
+    "Nietykalni": "Intouchables",
     "K-PAX": "K-PAX",
     "Alicja w Krainie Czarów": "Alice in Wonderland",
     "To nie jest kraj dla starych ludzi": "No Country for Old Men",
