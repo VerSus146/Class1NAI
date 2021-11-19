@@ -36,9 +36,7 @@ def Parse_CSV() -> dict:
                         points = row[index]
                     #When we have both we need to save them
                     if title != None and points != None:
-                        print('original: ',title)
                         movie = lev_comapre(title)[0]
-                        print('search: ',movie)
                         movies[movie.lower()] = points
                         title = None
                         points = None

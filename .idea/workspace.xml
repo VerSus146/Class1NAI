@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4048a9d-2d28-43a2-865c-f3df2c514055" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pawn.py" afterDir="false" />
+    <list default="true" id="b4048a9d-2d28-43a2-865c-f3df2c514055" name="Changes" comment="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames">
+      <change beforePath="$PROJECT_DIR$/.idea/Class1NAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Class1NAI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/filmy.xls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/parser.py" afterDir="false" />
     </list>
     <list id="9f89d03d-eaec-4da6-b978-def541152248" name="Changes by Krystian" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +24,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -38,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Lab3/main.py" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -77,12 +81,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab3/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,6 +95,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.Pawn" />
+      <item itemvalue="Python.main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
@@ -111,6 +119,112 @@
       <workItem from="1634472699274" duration="199000" />
       <workItem from="1634472994166" duration="9108000" />
     </task>
+    <task id="LOCAL-00001" summary="Putting everything in one project">
+      <created>1637003601643</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637003601643</updated>
+    </task>
+    <task id="LOCAL-00002" summary="LAB3 .xls">
+      <created>1637005724970</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637005724970</updated>
+    </task>
+    <task id="LOCAL-00003" summary="LAB3 .csv">
+      <created>1637006865442</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637006865442</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Basic parsing">
+      <created>1637011288323</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637011288323</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Quick fix to return data from parsed CSV">
+      <created>1637011512700</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637011512700</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1st part of movies">
+      <created>1637059953729</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637059953729</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2nd part of movies">
+      <created>1637068580382</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637068580382</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Finding movies by user input">
+      <created>1637074742116</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637074742116</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Comments">
+      <created>1637079384460</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637079384460</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added changing the name of Movie to english name">
+      <created>1637080768200</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637080768200</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix for exception while changing name">
+      <created>1637082481840</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637082481840</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed changing names and not sending tuples.">
+      <created>1637084572647</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1637084572647</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Dostrajanie i fixy">
+      <created>1637087378895</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1637087378895</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Parse V2 for">
+      <created>1637268255737</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1637268255737</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames">
+      <created>1637275822684</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637275822684</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +244,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Putting everything in one project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Putting everything in one project" />
+    <MESSAGE value="LAB3 .xls" />
+    <MESSAGE value="LAB3 .csv" />
+    <MESSAGE value="Basic parsing" />
+    <MESSAGE value="Quick fix to return data from parsed CSV" />
+    <MESSAGE value="1st part of movies" />
+    <MESSAGE value="2nd part of movies" />
+    <MESSAGE value="Finding movies by user input" />
+    <MESSAGE value="Comments" />
+    <MESSAGE value="Added changing the name of Movie to english name" />
+    <MESSAGE value="fix for exception while changing name" />
+    <MESSAGE value="Fixed changing names and not sending tuples." />
+    <MESSAGE value="Dostrajanie i fixy" />
+    <MESSAGE value="Parse V2 for" />
+    <MESSAGE value="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -142,5 +270,10 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="user_search_movies" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
