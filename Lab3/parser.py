@@ -39,12 +39,11 @@ def Parse_CSV() -> dict:
                         print('original: ',title)
                         movie = lev_comapre(title)[0]
                         print('search: ',movie)
-                        #Lower case and unidecode special letters ( śćż )  to normal letters
                         movies[movie.lower()] = points
                         title = None
                         points = None
                     index = index + 1
-                    personKeyName = unidecode(personName.lower()).replace(' ', '_')
+                    personKeyName = personName.lower().replace(' ', '_')
                 peopleMovies[personKeyName] = movies
 
     return peopleMovies
