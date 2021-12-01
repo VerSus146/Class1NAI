@@ -1,19 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from data_preprocessor import import_data
-from sklearn import svm,datasets
+from sklearn import svm, datasets
+
 
 def predict_total_amount():
     data = import_data()
-    claims = []
-    total_amounts = []
-    for claim, total_amount in data:
-        claims.append(claim)
-        total_amounts.append(total_amount)
-    print(claims)
-    print(total_amounts)
 
-    #creating SVM for claim, total_payment
-    svc = svm.SVC(kernel='rbf', C=1, gamma=100).fit(claims, total_amounts)
+    features = []
+    samples = []
+    for claim, total_payment in data:
+        features.append([claim])
+        samples.append(total_payment)
+
+    print(features)
+    print(samples)
+    # creating SVM for claim, total_payment
+    svc = svm.SVR(kernel='linear', C=1.0).fit(features, samples)
+    print(svc.predict([[40]]))
 
 predict_total_amount()
