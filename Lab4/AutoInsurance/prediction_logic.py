@@ -28,7 +28,7 @@ def predict_total_amount():
         features.append([claim])
         samples.append(total_payment)
 
-    # creating SVR for claim, total_payment
+    # creating SVR for claim, total_payment, linear regression
     svr = svm.SVR(kernel='linear', C=1.0).fit(features, samples)
 
     # Taking coefficiency
