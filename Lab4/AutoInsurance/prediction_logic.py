@@ -9,35 +9,47 @@ style.use("ggplot")
 def predict_total_amount():
     data = import_data()
 
+    #features are input data, claims
     features = []
+
+    #samples are the expected result after inputting the feature
     samples = []
+
+    #arrays will be scattered for graph purposes
     claims = []
     total_payments = []
+
     for claim, total_payment in data:
         #graph generation purpose
         claims.append(claim)
         total_payments.append(total_payment)
 
+
         features.append([claim])
         samples.append(total_payment)
 
-    print(features)
-    print(samples)
-    # creating SVM for claim, total_payment
+    # creating SVR for claim, total_payment
+    svr = svm.SVR(kernel='linear', C=1.0).fit(features, samples)
 
-    # plt.scatter(claims,total_payments)
-    # plt.show()
+    # Taking coefficiency
 
-    svc = svm.SVR(kernel='linear', C=1.0).fit(features, samples)
-    w = svc.coef_[0]
+    w = svr.coef_[0]
     a = w
-    xx = np.linspace(-5,180)
-    yy = a* xx - svc.intercept_[0] / w[0]
-    h0 = plt.plot(xx,yy, 'k-', label="non weighted div")
-    plt.scatter(claims, total_payments, c = y)
+
+    # Setting the lin
+    xx = np.linspace(0,180)
+    yy = a* xx - svr.intercept_[0] / w[0]
+
+    # Generating plot
+    plt.plot(xx,yy, 'k-',)
+
+    # Scattering data for x,y graph
+    plt.scatter(claims, total_payments)
     plt.show()
-    print(w)
-    print(svc.predict([[40]]))
+    # Test data
+    print("Prediction of payout for 40 claims: " + str(svr.predict([[40]])[0]) + " thousand swedish crowns")
+    print("Prediction of payout for 100 claims: " + str(svr.predict([[100]])[0]) + " thousand swedish crowns")
+    print("Prediction of payout for 25 claims: " + str(svr.predict([[25]])[0]) + " thousand swedish crowns")
 
 
 predict_total_amount()
