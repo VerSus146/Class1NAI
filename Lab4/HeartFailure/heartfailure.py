@@ -38,19 +38,25 @@ recg_conv = lambda recg: converters.restingecg_converter(recg)
 ea_conv = lambda ea: converters.exerciseangina_converter(ea)
 sts_conv = lambda sts: converters.st_slope_converter(sts)
 
+
+# Read feature data from CSV. Converters change string data to numeric data needed for svm.SVC fit
 heart = pd.read_csv('heart.csv',
                     usecols=["Age", "Sex", "ChestPainType", "RestingBP", "Cholesterol", "FastingBS", "RestingECG",
                              "MaxHR", "ExerciseAngina", "Oldpeak", "ST_Slope"],
                     converters={"Sex": sex_conv, "ChestPainType": cpt_conv,
                                 "RestingECG": recg_conv, "ExerciseAngina": ea_conv, "ST_Slope": sts_conv})
 
+# Read Heart failure data from CSV.
 target = pd.read_csv('heart.csv', usecols=["HeartDisease"])
 
+# Train
 svc = svm.SVC(kernel='rbf', C=1, gamma=100).fit(heart, target)
 
+# Patient to be tested against our trained model - Data from Krystian's GF > Medical student
 test = np.array([45, 0, 3, 145, 240, 0, 2, 90, 0, 0, 0])
 test = test.reshape(1, -1)
 
+# Nicely displayer data
 print("Subject of test:")
 print(f"Age: {test[0, 0]}")
 print(f"Sex: {test[0, 1]}")
@@ -65,16 +71,24 @@ print(f"Oldpeak: {test[0, 9]}")
 print(f"ST Slope: {test[0, 10]}")
 
 print(f"Heart Failure (Prediction): {svc.predict(test)[0]}")
+# Correct answer according to Medical Student
 
 df = pd.read_csv('heart.csv', converters={"FastingBS": fbs_conv})
+# Creating Data Frame for diagram display
 
+# Colors for diagram
 oe = ['g', 'r']
+
 plt.subplot(1, 1, 1)
 plt.margins(0.3)
 plt.style.use('seaborn')
+# Layout for PLT
 plt.tight_layout()
+# Default style type
 seaborn.set_context('talk')
+# Create histogram with provided data, also histogram smoothing and colors.
 seaborn.histplot(data=df, x="Age", hue="HeartDisease", multiple="stack", palette=oe)
+# Show diagram
 plt.show()
 
 oe = ['g', 'r']
