@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import converters
+import seaborn
 from sklearn import svm, datasets
 
 '''
@@ -53,35 +54,92 @@ test = test.reshape(1, -1)
 
 print(svc.predict(test))
 
+df = pd.read_csv('heart.csv')
 
-'''
-# import some data to play with
-iris = datasets.load_iris()
-print(iris)
-X = iris.data[:, :2] # we only take the first two features. We could
- # avoid this ugly slicing by using a two-dim dataset
-y = iris.target
-
-# we create an instance of SVM and fit out data. We do not scale our
-# data since we want to plot the support vectors
-svc = svm.SVC(kernel='rbf', C=1, gamma=100).fit(X, y)
-
-# create a mesh to plot in
-x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-h = (x_max / x_min)/100
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
- np.arange(y_min, y_max, h))
-
+oe = ['g', 'r']
 plt.subplot(1, 1, 1)
-Z = svc.predict(np.c_[xx.ravel(), yy.ravel()])
-Z = Z.reshape(xx.shape)
-plt.contourf(xx, yy, Z, cmap=plt.cm.Paired, alpha=0.8)
-
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Paired)
-plt.xlabel('Sepal length')
-plt.ylabel('Sepal width')
-plt.xlim(xx.min(), xx.max())
-plt.title('SVC with linear kernel')
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="Age", hue="HeartDisease", multiple="stack", palette=oe)
 plt.show()
-'''
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="Sex", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="ChestPainType", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="RestingBP", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="Cholesterol", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="FastingBS", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="RestingECG", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="MaxHR", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="ExerciseAngina", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="Oldpeak", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
+
+oe = ['g', 'r']
+plt.subplot(1, 1, 1)
+plt.style.use('seaborn')
+plt.tight_layout()
+seaborn.set_context('talk')
+seaborn.histplot(data=df, x="ST_Slope", hue="HeartDisease", multiple="stack", palette=oe)
+plt.show()
