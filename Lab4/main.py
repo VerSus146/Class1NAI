@@ -58,6 +58,7 @@ df = pd.read_csv('heart.csv')
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -66,6 +67,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -74,6 +76,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -82,6 +85,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -90,6 +94,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -98,6 +103,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -106,6 +112,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -114,6 +121,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -122,6 +130,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -130,6 +139,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
@@ -138,6 +148,7 @@ plt.show()
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
+plt.margins(0.3)
 plt.style.use('seaborn')
 plt.tight_layout()
 seaborn.set_context('talk')
