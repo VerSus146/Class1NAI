@@ -45,24 +45,15 @@ print(target)
 
 svc = svm.SVC(kernel='rbf', C=1, gamma=100).fit(heart, target)
 
-# create a mesh to plot in
-x_min, x_max = heart[:, 0].min() - 1, heart[:, 0].max() + 1
-y_min, y_max = heart[:, 1].min() - 1, heart[:, 1].max() + 1
-h = (x_max / x_min) / 100
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                     np.arange(y_min, y_max, h))
+# 38,M,NAP,138,175,0,Normal,173,N,0,Up - result 0
+# 38,0,1,138,175,0,0,173,0,0,0
 
-plt.subplot(1, 1, 1)
-Z = svc.predict(np.c_[xx.ravel(), yy.ravel()])
-Z = Z.reshape(xx.shape)
-plt.contourf(xx, yy, Z, cmap=plt.cm.Paired, alpha=0.8)
+test = np.array([45, 0, 3, 145, 240, 0, 2, 90, 0, 0, 0])
+test = test.reshape(1, -1)
 
-plt.scatter(heart[:, 0], heart[:, 1], c=target, cmap=plt.cm.Paired)
-plt.xlabel('Sepal length')
-plt.ylabel('Sepal width')
-plt.xlim(xx.min(), xx.max())
-plt.title('SVC with linear kernel')
-plt.show()
+print(svc.predict(test))
+
+
 '''
 # import some data to play with
 iris = datasets.load_iris()
