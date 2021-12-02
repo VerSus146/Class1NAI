@@ -34,8 +34,15 @@ def exerciseangina_converter(ea):
 
 def st_slope_converter(sts):
     if "Up" in sts:
-        return 0
+        return 2
     elif "Flat" in sts:
         return 1
     elif "Down" in sts:
-        return 2
+        return 0
+
+
+def fastingbs_converter(fbs):
+    if "0" in fbs:
+        return "N"
+    if "1" in fbs:
+        return "Y"
