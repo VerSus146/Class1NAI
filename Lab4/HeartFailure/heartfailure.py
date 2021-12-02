@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import converters
+import Lab4.HeartFailure.converters as converters
 import seaborn
 from sklearn import svm, datasets
 

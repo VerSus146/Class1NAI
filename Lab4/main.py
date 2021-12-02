@@ -1,2 +1,2 @@
-if __name__ == '__main__':
-    print("yolo")
+import Lab4.HeartFailure.heartfailure
+import Lab4.AutoInsurance.prediction_logic
