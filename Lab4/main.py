@@ -23,11 +23,15 @@ Converters:
         N - 0
         Y - 1
     ST_Slope:
-        Up - 0
+        Down - 0
         Flat - 1
-        Down - 2
+        Up - 2
+    FastingBS:
+        0 - N
+        1 - Y
 '''
 
+fbs_conv = lambda fbs: converters.fastingbs_converter(fbs)
 sex_conv = lambda s: converters.sex_converter(s)
 cpt_conv = lambda cpt: converters.chestpaintype_converter(cpt)
 recg_conv = lambda recg: converters.restingecg_converter(recg)
@@ -54,7 +58,7 @@ test = test.reshape(1, -1)
 
 print(svc.predict(test))
 
-df = pd.read_csv('heart.csv')
+df = pd.read_csv('heart.csv', converters={"FastingBS": fbs_conv})
 
 oe = ['g', 'r']
 plt.subplot(1, 1, 1)
