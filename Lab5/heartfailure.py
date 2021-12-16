@@ -133,7 +133,7 @@ model = tf.keras.models.Sequential([
 
 model.compile(optimizer=tf.keras.optimizers.Adam(0.0001), loss='binary_crossentropy', metrics=['accuracy'])
 
-history = model.fit(train_ds, validation_data=test_ds, epochs=150, use_multiprocessing=True)
+history = model.fit(train_ds, validation_data=test_ds, epochs=100, use_multiprocessing=True)
 
 model.evaluate(test_ds)
 
