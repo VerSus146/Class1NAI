@@ -3,8 +3,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 
-# A utility method to create a tf.data dataset from a Pandas Dataframe
-def df_to_dataset(dataframe, batch_size=32):
+
+def df_to_dataset(dataframe, batch_size=8):
     dataframe = dataframe.copy()
     labels = dataframe.pop('HeartDisease')
     return tf.data.Dataset.from_tensor_slices((dict(dataframe), labels)) \
@@ -113,22 +113,27 @@ slope_one_hot = tf.feature_column.indicator_column(slope)
 print(slope_one_hot)
 feature_columns.append(slope_one_hot)
 
-model = tf.keras.models.Sequential([
-  tf.keras.layers.DenseFeatures(feature_columns=feature_columns),
-  tf.keras.layers.Dense(units=128, activation='relu'),
-  tf.keras.layers.Dropout(rate=0.2),
-  tf.keras.layers.Dense(units=128, activation='relu'),
-  tf.keras.layers.Dense(units=1, activation='sigmoid')
-])
-
-train, test = train_test_split(df, test_size=0.1, random_state=32)
+train, test = train_test_split(df, test_size=0.2, random_state=64)
 train_ds = df_to_dataset(train)
 test_ds = df_to_dataset(test)
 
+print(test_ds)
+print(train_ds)
 
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model = tf.keras.models.Sequential([
+  tf.keras.layers.DenseFeatures(feature_columns=feature_columns),
+  tf.keras.layers.Dense(units=128, activation="relu"),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(units=64, activation="relu"),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(units=8, activation="relu"),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(units=1, activation="sigmoid"),
+])
 
-history = model.fit(train_ds, validation_data=test_ds, epochs=100, use_multiprocessing=True)
+model.compile(optimizer=tf.keras.optimizers.Adam(0.0001), loss='binary_crossentropy', metrics=['accuracy'])
+
+history = model.fit(train_ds, validation_data=test_ds, epochs=150, use_multiprocessing=True)
 
 model.evaluate(test_ds)
 
