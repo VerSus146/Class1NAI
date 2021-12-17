@@ -4,9 +4,7 @@ Autorzy: Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
 Projekt: Systemy klasyfikacji chorob serca, zwierzat, oraz damskiej garderoby z wykorzystaniem sieci neuronowych
 
 Problem:
-1. Na podstawie danych historycznych przewidujemy jaką wypłatę w tysiącach szwedzkich koron należy wypłacić za daną ilość zgłoszeń
-2. Na podstawie danych 918 pacjentów przewidujemy czy u danej osoby na podstawie jej danych zdrowotnych (tetno, glukoza, itp)
-   jest ryzyko wystapienia choroby serca
+
 
 Podsumowanie:
 AutoInsurance - wykonany metodą SLR simple linear regression - wykorzystujący regresję liniową wyznaczającą średnią przewidywaną

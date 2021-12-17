@@ -37,7 +37,7 @@ Converters:
         1 - Y
 '''
 
-dataFile = r'C:\Users\Krystian\PycharmProjects\Class1NAI\Lab4\heart.csv'
+dataFile = r'../../Lab4/heart.csv'
 df = pd.read_csv(dataFile)
 df.head()
 

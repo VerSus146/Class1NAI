@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.dummy import DummyClassifier
+
 import Lab4.HeartFailure.converters as converters
 import seaborn
 from sklearn import svm, datasets
@@ -40,14 +42,14 @@ sts_conv = lambda sts: converters.st_slope_converter(sts)
 
 
 # Read feature data from CSV. Converters change string data to numeric data needed for svm.SVC fit
-heart = pd.read_csv('heart.csv',
+heart = pd.read_csv('../heart.csv',
                     usecols=["Age", "Sex", "ChestPainType", "RestingBP", "Cholesterol", "FastingBS", "RestingECG",
                              "MaxHR", "ExerciseAngina", "Oldpeak", "ST_Slope"],
                     converters={"Sex": sex_conv, "ChestPainType": cpt_conv,
                                 "RestingECG": recg_conv, "ExerciseAngina": ea_conv, "ST_Slope": sts_conv})
 
 # Read Heart failure data from CSV.
-target = pd.read_csv('heart.csv', usecols=["HeartDisease"])
+target = pd.read_csv('../heart.csv', usecols=["HeartDisease"])
 
 # Train
 svc = svm.SVC(kernel='rbf', C=1, gamma=100).fit(heart, target)
@@ -73,8 +75,14 @@ print(f"ST Slope: {test[0, 10]}")
 print(f"Heart Failure (Prediction): {svc.predict(test)[0]}")
 # Correct answer according to Medical Student
 
-df = pd.read_csv('heart.csv', converters={"FastingBS": fbs_conv})
+df = pd.read_csv('../heart.csv', converters={"FastingBS": fbs_conv})
 # Creating Data Frame for diagram display
+
+dummy_clf = DummyClassifier(strategy="stratified")
+dummy_clf.fit(heart, target)
+DummyClassifier(strategy='stratified')
+dummy_clf.predict(test)
+print('Accuracy ' + str(dummy_clf.score(heart, target)))
 
 # Colors for diagram
 oe = ['g', 'r']
