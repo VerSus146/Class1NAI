@@ -80,5 +80,7 @@ test_image = np.expand_dims(test_image, axis=0)
 
 p_test = model.predict(test_image).argmax(axis=1)
 print('Predicted image is ' + class_names[int(p_test)])
+
+# Uncomment to generate confusion matrix
 # cm = confusion_matrix(test_labels, p_test)
 # plot_confusion_matrix(cm, list(range(10)), normalize=True)
