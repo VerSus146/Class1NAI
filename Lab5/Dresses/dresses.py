@@ -7,14 +7,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.preprocessing import image as keras_image
 
-
+# Create Confusion Matrix
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
                           title='Confusion matrix',
                           cmap=plt.cm.Blues):
+
+    # divide by the sum of all values in the confusion matrix to create a percentage
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
+    # Create figure and plot the confusion matrix
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -22,20 +25,23 @@ def plot_confusion_matrix(cm, classes,
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
 
+    # Loop over data dimensions and create text annotations
     fmt = '.2f' if normalize else 'd'
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center",
                  color="white" if cm[i, j] > thresh else "black")
 
+    # Assign labels and set layout
     plt.tight_layout()
     plt.ylabel('Correct label')
     plt.xlabel('Prediction')
     plt.show()
 
-
+# Get the data
 fashion_mnist = tf.keras.datasets.fashion_mnist
 
+# Load the data into train and test sets
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
 # Normalize pixel values to be between 0 and 1
@@ -44,6 +50,7 @@ train_images, test_images = train_images / 255.0, test_images / 255.0
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
+# Create Neural Network Model
 if os.path.isfile('fashion-mnist_model.h5') != True:
     model = tf.keras.Sequential([
         tf.keras.layers.Flatten(input_shape=(28, 28)),
@@ -51,6 +58,7 @@ if os.path.isfile('fashion-mnist_model.h5') != True:
         tf.keras.layers.Dense(10)
     ])
 
+    # Compile the model
     model.compile(optimizer='adam',
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                   metrics=['accuracy'])
@@ -60,9 +68,11 @@ if os.path.isfile('fashion-mnist_model.h5') != True:
     train_label_one = train_labels[0]
     np.delete(test_labels, [0])
 
+    # Train the model
     history = model.fit(train_images, train_labels, epochs=10,
                         validation_data=(test_images, test_labels))
 
+    # Count model loss and accuracy
     test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
     model.save('fashion-mnist_model.h5')
 else:
@@ -70,6 +80,8 @@ else:
     test_image_one = test_images[0]
     np.delete(test_images, [0])
     np.delete(test_labels, [0])
+
+# Create confusion matrix
 plt.rcParams['figure.figsize'] = [10, 7]
 
 # get first image to test
@@ -81,6 +93,7 @@ test_image = np.expand_dims(test_image, axis=0)
 p_test = model.predict(test_image).argmax(axis=1)
 print('Predicted image is ' + class_names[int(p_test)])
 
-# Uncomment to generate confusion matrix
+# Plot the confusion matrix
+  # Uncomment to generate confusion matrix
 # cm = confusion_matrix(test_labels, p_test)
 # plot_confusion_matrix(cm, list(range(10)), normalize=True)

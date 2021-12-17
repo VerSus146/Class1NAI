@@ -2,25 +2,29 @@ from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
 
+# Load the model
 model = load_model('cifar10_model.h5')
+
+# Load the images
 bird = image.load_img('animals_images/bird.png')
 dog1 = image.load_img('animals_images/dog.jpg')
 dog2 = image.load_img('animals_images/dog2.png')
 deer = image.load_img('animals_images/deer.png')
 
 counter = 0
+# Predict the given images
 for image_item in [bird, dog1, dog2, deer]:
 
-    # get first image to test
+    # Get first image to test
     test_image = image.img_to_array(image_item)
 
-    #convert to array
+    # Convert to array
     test_image = np.expand_dims(test_image, axis=0)
 
-    #predict what is this image
+    # Predict what is this image
     result = model.predict(test_image)
 
-    #fetch highest possible value out of 10 types - most probable label
+    # Fetch highest possible value out of 10 types - most probable label
     result = np.argmax(result[0])
 
     animal_type = 'None'
