@@ -1,15 +1,17 @@
+import os
 from sklearn.metrics import confusion_matrix
+from keras.models import load_model
 import itertools
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
+from keras.preprocessing import image as keras_image
 
 
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
                           title='Confusion matrix',
                           cmap=plt.cm.Blues):
-
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
@@ -42,24 +44,41 @@ train_images, test_images = train_images / 255.0, test_images / 255.0
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Flatten(input_shape=(28, 28)),
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(10)
-])
+if os.path.isfile('fashion-mnist_model.h5') != True:
+    model = tf.keras.Sequential([
+        tf.keras.layers.Flatten(input_shape=(28, 28)),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(10)
+    ])
 
-model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
 
-history = model.fit(train_images, train_labels, epochs=10,
-                    validation_data=(test_images, test_labels))
+    test_image_one = test_images[0]
+    np.delete(test_images, [0])
+    train_label_one = train_labels[0]
+    np.delete(test_labels, [0])
 
-test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
-model.save('fashion-mnist_model.h5')
+    history = model.fit(train_images, train_labels, epochs=10,
+                        validation_data=(test_images, test_labels))
 
+    test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+    model.save('fashion-mnist_model.h5')
+else:
+    model = load_model('fashion-mnist_model.h5')
+    test_image_one = test_images[0]
+    np.delete(test_images, [0])
+    np.delete(test_labels, [0])
 plt.rcParams['figure.figsize'] = [10, 7]
 
-p_test = model.predict(test_images).argmax(axis=1)
-cm = confusion_matrix(test_labels, p_test)
-plot_confusion_matrix(cm, list(range(10)), normalize=True)
+# get first image to test
+test_image = keras_image.img_to_array(test_image_one)
+
+# convert to array
+test_image = np.expand_dims(test_image, axis=0)
+
+p_test = model.predict(test_image).argmax(axis=1)
+print('Predicted image is ' + class_names[int(p_test)])
+# cm = confusion_matrix(test_labels, p_test)
+# plot_confusion_matrix(cm, list(range(10)), normalize=True)
