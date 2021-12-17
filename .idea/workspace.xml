@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4048a9d-2d28-43a2-865c-f3df2c514055" name="Changes" comment="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames">
-      <change beforePath="$PROJECT_DIR$/.idea/Class1NAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Class1NAI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b4048a9d-2d28-43a2-865c-f3df2c514055" name="Changes" comment="Lab 5 - Comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/filmy.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/parser.py" afterDir="false" />
     </list>
     <list id="9f89d03d-eaec-4da6-b978-def541152248" name="Changes by Krystian" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -50,7 +46,7 @@
       <recent name="C:\Users\Krystian\PycharmProjects\Class1NAI\Lab3" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.heartfailure">
     <configuration name="Pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Class1NAI" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -65,6 +61,69 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pawn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="animalRecognition" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Class1NAI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab5/Animals" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab5/Animals/animalRecognition.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dresses" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Class1NAI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab5/Dresses" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab5/Dresses/dresses.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="heartfailure" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Class1NAI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab5/heartfailure" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab5/heartfailure/heartfailure.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -97,10 +156,16 @@
     </configuration>
     <list>
       <item itemvalue="Python.Pawn" />
+      <item itemvalue="Python.animalRecognition" />
+      <item itemvalue="Python.dresses" />
+      <item itemvalue="Python.heartfailure" />
       <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.heartfailure" />
+        <item itemvalue="Python.animalRecognition" />
+        <item itemvalue="Python.dresses" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.Pawn" />
       </list>
@@ -258,7 +323,8 @@
     <MESSAGE value="Dostrajanie i fixy" />
     <MESSAGE value="Parse V2 for" />
     <MESSAGE value="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working towards ML movie recommendation ( KNN ) &#10;Created Parser for Data Frames" />
+    <MESSAGE value="Lab 5 - Comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab 5 - Comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
