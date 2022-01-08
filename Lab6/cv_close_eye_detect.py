@@ -4,6 +4,27 @@ import argparse
 from video_player import VideoCommercialPlayer
 import os
 
+'''
+Autorzy: Krystian Dąbrowski s18550, Krzysztof Windorpski s18562
+
+Projekt: Zła platforma do wyświetlania reklam
+
+Problem:
+1. Stworzyć system odtwarzania reklam wideo wraz z wykrywaniem czy odbiorca je ogląda ( ma otwarte oczy i patrzy w kierunku monitora ) 
+
+Podsumowanie:
+Gdy użytkownik ogląda reklamę ( jego oczy i twarz są wykryte ) wideo jest odwtarzane normalnie. 
+Gdy użytkownik przez chwilę oderwie wzrok ( np. zamknie oczy ), wideo się pauzuje, zostaje urchomione nagranie dźwiękowe, alarmowe w celu poinformowania go, że źle robi :P
+ 
+W celu wykrycia twarzy użyliśmy klasyfikatora dla wykrywania twarzy frontalnie - haarcascade_frontalface_alt.xml
+Następnie w celu wykrycia oczu użyliśmy klasyfikatora do wykrywania oczu, nawet tych w okularach haarcascade_eye_tree_eyeglasses.xml
+
+Sposób użycia
+Uruchom plik cv_close_eye_detect.py
+Wymagane są uprawnienia do użycia kamery oraz do odtwarzania obrazów i dźwięków
+
+'''
+
 def detectAndDisplay(frame, noEyesCounter):
     frame_gray = cv.cvtColor(frame, cv.COLOR_RGB2GRAY)
     frame_gray = cv.equalizeHist(frame_gray)
@@ -29,6 +50,7 @@ def detectAndDisplay(frame, noEyesCounter):
 
         for (x2,y2,w2,h2) in eyes:
             print('eyes_detected in for:' + str(eyes_detected))
+
             # eyes detected - play the commercial and reset no eyes counter
             noEyesCounter = 0
 

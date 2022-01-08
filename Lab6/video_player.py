@@ -1,8 +1,7 @@
 import cv2
-import time
-
 
 class VideoCommercialPlayer:
+    """ Simple Video Player with Start/Stop functionality """
     is_paused = True
     is_video_opened = False
     video_stream = None
@@ -20,8 +19,9 @@ class VideoCommercialPlayer:
             return False
         else:
             return True
+
     def displayVideo(self):
-        print ('is_opened: ' + str(self.is_video_opened) + ' is_paused:' + str(self.is_paused))
+        print('is_opened: ' + str(self.is_video_opened) + ' is_paused:' + str(self.is_paused))
         if self.is_video_opened and not self.is_paused:
             ret, frame = self.video_stream.read()
 
