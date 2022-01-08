@@ -2,6 +2,7 @@ import cv2
 
 class VideoCommercialPlayer:
     """ Simple Video Player with Start/Stop functionality """
+    # States of video player
     is_paused = True
     is_video_opened = False
     video_stream = None
